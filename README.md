@@ -1,0 +1,1 @@
+# INFO188-T1-Aut-mata-celular-1D
