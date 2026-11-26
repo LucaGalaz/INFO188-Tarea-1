@@ -1,0 +1,4 @@
+*.o
+*.hi
+prog
+prog.exe
