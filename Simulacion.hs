@@ -5,7 +5,6 @@ module Simulacion
 
 import Control.Monad (replicateM_)
 import Control.Monad.State
-
 import Automata (Automata)
 import qualified Automata as Aut
 
@@ -23,6 +22,8 @@ mostrar = do
   a <- get
   liftIO (putStrLn (Aut.mostrarAutomata a))
 
--- imprime desde la generación 0 hasta la n
+-- imprime exactamente n filas: la condición inicial y n-1 pasos
 simular :: Int -> Automata -> IO ()
-simular n ini = evalStateT (mostrar >> replicateM_ n (pasoM >> mostrar)) ini
+simular n ini
+  | n <= 0    = return ()
+  | otherwise = evalStateT (mostrar >> replicateM_ (n - 1) (pasoM >> mostrar)) ini
